@@ -4,13 +4,12 @@
   <meta charset="UTF-8">
   <title>طاسة وفنجان | Tasa & Finjan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- =======================
        GLOBAL STYLES
   ======================== -->
   <style>
-
     :root {
       --bg-dark: #1c1c1c;
       --bg-card: #2a2a2a;
@@ -31,6 +30,7 @@
       background-color: var(--bg-dark);
       color: var(--text-light);
       transition: background-color 0.3s ease;
+      scroll-behavior: smooth; /* ← سلسة عند التنقل */
     }
 
     a {
@@ -42,22 +42,21 @@
        HEADER
     ======================== */
 
-header {
-  background: #000000;
-  background-image: none;
-  padding: 0;
-  margin: 0;
-}
-.fullscreen-logo {
-  width: 100vw;
-  height: 100vh;
-  background-color: #000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
+    header {
+      background: #000000;
+      background-image: none;
+      padding: 0;
+      margin: 0;
+    }
+    .fullscreen-logo {
+      width: 100vw;
+      height: 100vh;
+      background-color: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
 
     header h1 {
       color: var(--primary);
@@ -97,6 +96,15 @@ header {
       max-width: 1200px;
       margin: 60px auto;
       padding: 0 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    /* ← هذا يُفعّل الحركة عند الظهور */
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     section h2 {
@@ -171,83 +179,78 @@ header {
       margin-top: 6px;
     }
 
+    /* =======================
+       HEADER LOGO STYLE
+    ======================== */
 
+    .main-header {
+      background-color: #111;
+      padding: 20px 15px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
 
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-container img {
+      max-width: 220px;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Language Button */
+    .lang-switch {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .lang-switch button {
+      background-color: #ff8c32;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #000;
+    }
 
     /* =======================
-   HEADER LOGO STYLE
-======================== */
+       MOBILE OPTIMIZATION
+    ======================== */
+    @media (max-width: 768px) {
 
-.main-header {
-  background-color: #111;
-  padding: 20px 15px;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-}
+      .logo-container img {
+        max-width: 170px;
+      }
 
-.logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+      .lang-switch {
+        top: 15px;
+        left: 15px;
+      }
 
-.logo-container img {
-  max-width: 220px;
-  width: 100%;
-  height: auto;
-}
+      .lang-switch button {
+        padding: 6px 12px;
+        font-size: 13px;
+      }
+    }
 
-/* Language Button */
-.lang-switch {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
+    .logo-container img {
+      transition: transform 0.3s ease;
+    }
 
-.lang-switch button {
-  background-color: #ff8c32;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  color: #000;
-}
-
-/* =======================
-   MOBILE OPTIMIZATION
-======================== */
-@media (max-width: 768px) {
-
-  .logo-container img {
-    max-width: 170px;
-  }
-
-  .lang-switch {
-    top: 15px;
-    left: 15px;
-  }
-
-  .lang-switch button {
-    padding: 6px 12px;
-    font-size: 13px;
-  }
-}
-
-
-
-.logo-container img {
-  transition: transform 0.3s ease;
-}
-
-.logo-container img:hover {
-  transform: scale(1.05);
-}
-.main-header {
-  background: linear-gradient(90deg, #111, #1c1c1c);
-}
+    .logo-container img:hover {
+      transform: scale(1.05);
+    }
+    .main-header {
+      background: linear-gradient(90deg, #111, #1c1c1c);
+    }
 
     /* =======================
        MOBILE RESPONSIVE
@@ -283,628 +286,266 @@ header {
         box-shadow: 0 5px 12px rgba(0,0,0,0.3);
       }
 
+      .hero-header {
+        height: 220px;
+      }
 
-.hero-header {
-  width: 100%;
-  height: 260px;
-  background-color: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
+      .hero-logo img {
+        max-width: 95%;
+      }
 
-/* Logo container */
-.hero-logo {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+      .lang-switch {
+        top: 10px;
+        left: 10px;
+      }
 
-/* Logo image */
-.hero-logo img {
-  max-width: 85%;
-  height: auto;
-  object-fit: contain;
-}
-
-/* =======================
-   LANGUAGE SWITCH
-======================== */
-.lang-switch {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  z-index: 10;
-}
-
-.lang-switch button {
-  background-color: #ff8c32;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #000;
-}
-
-/* =======================
-   MOBILE OPTIMIZATION
-======================== */
-@media (max-width: 768px) {
-
-  .hero-header {
-    height: 220px;
-  }
-
-  .hero-logo img {
-    max-width: 95%;
-  }
-
-  .lang-switch {
-    top: 10px;
-    left: 10px;
-  }
-
-  .lang-switch button {
-    padding: 6px 12px;
-    font-size: 13px;
-  }
-}
-
-/* =======================
-   EXTRA SMALL DEVICES
-======================== */
-@media (max-width: 480px) {
-
-  .hero-header {
-    height: 200px;
-  }
-
-  .hero-logo img {
-    max-width: 100%;
-  }
-}
-/* =======================
-   HERO HEADER FULL WIDTH
-======================== */
-
-.hero-header {
-  width: 100%;
-  height: 260px;
-  background-color: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-/* Logo container */
-.hero-logo {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Logo image */
-.hero-logo img {
-  max-width: 85%;
-  height: auto;
-  object-fit: contain;
-}
-
-/* =======================
-   LANGUAGE SWITCH
-======================== */
-.lang-switch {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  z-index: 10;
-}
-
-.lang-switch button {
-  background-color: #ff8c32;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #000;
-}
-
-/* =======================
-   MOBILE OPTIMIZATION
-======================== */
-@media (max-width: 768px) {
-
-  .hero-header {
-    height: 220px;
-  }
-
-  .hero-logo img {
-    max-width: 95%;
-  }
-
-  .lang-switch {
-    top: 10px;
-    left: 10px;
-  }
-
-  .lang-switch button {
-    padding: 6px 12px;
-    font-size: 13px;
-  }
-}
-
-/* =======================
-   EXTRA SMALL DEVICES
-======================== */
-@media (max-width: 480px) {
-
-  .hero-header {
-    height: 200px;
-  }
-
-  .hero-logo img {
-    max-width: 100%;
-  }
-}/* =======================
-   HERO HEADER FULL WIDTH
-======================== */
-
-.hero-header {
-  width: 100%;
-  height: 260px;
-  background-color: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-/* Logo container */
-.hero-logo {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Logo image */
-.hero-logo img {
-  max-width: 85%;
-  height: auto;
-  object-fit: contain;
-}
-
-/* =======================
-   LANGUAGE SWITCH
-======================== */
-.lang-switch {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  z-index: 10;
-}
-
-.lang-switch button {
-  background-color: #ff8c32;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #000;
-}
-
-/* =======================
-   MOBILE OPTIMIZATION
-======================== */
-@media (max-width: 768px) {
-
-  .hero-header {
-    height: 220px;
-  }
-
-  .hero-logo img {
-    max-width: 95%;
-  }
-
-  .lang-switch {
-    top: 10px;
-    left: 10px;
-  }
-
-  .lang-switch button {
-    padding: 6px 12px;
-    font-size: 13px;
-  }
-}
-
-/* =======================
-   EXTRA SMALL DEVICES
-======================== */
-@media (max-width: 480px) {
-
-  .hero-header {
-    height: 200px;
-  }
-
-  .hero-logo img {
-    max-width: 100%;
-  }
-}
-/* =======================
-   HERO HEADER FULL WIDTH
-======================== */
-
-.hero-header {
-  width: 100%;
-  height: 260px;
-  background-color: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-/* Logo container */
-.hero-logo {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Logo image */
-.hero-logo img {
-  max-width: 85%;
-  height: auto;
-  object-fit: contain;
-}
-
-/* =======================
-   LANGUAGE SWITCH
-======================== */
-.lang-switch {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  z-index: 10;
-}
-
-.lang-switch button {
-  background-color: #ff8c32;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #000;
-}
-
-/* =======================
-   MOBILE OPTIMIZATION
-======================== */
-@media (max-width: 768px) {
-
-  .hero-header {
-    height: 220px;
-  }
-
-  .hero-logo img {
-    max-width: 95%;
-  }
-
-  .lang-switch {
-    top: 10px;
-    left: 10px;
-  }
-
-  .lang-switch button {
-    padding: 6px 12px;
-    font-size: 13px;
-  }
-}
-
-/* =======================
-   EXTRA SMALL DEVICES
-======================== */
-@media (max-width: 480px) {
-
-  .hero-header {
-    height: 200px;
-  }
-
-  .hero-logo img {
-    max-width: 100%;
-  }
-}
-.hero-logo img {
-  animation: fadeIn 1.2s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-.hero-header::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 3px;
-  background-color: #ff8c32;
-}
-/* =======================
-   FULL SCREEN LOGO HEADER
-======================== */
-
-.fullscreen-logo {
-  width: 100vw;
-  height: 100vh;
-  background-color: #000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-/* Logo Image */
-.fullscreen-logo img {
-  max-width: 70%;
-  height: auto;
-  object-fit: contain;
-}
-
-/* =======================
-   MOBILE RESPONSIVE
-======================== */
-@media (max-width: 768px) {
-
-  .fullscreen-logo img {
-    max-width: 90%;
-  }
-}
-
-/* =======================
-   SMALL MOBILE
-======================== */
-@media (max-width: 480px) {
-
-  .fullscreen-logo img {
-    max-width: 95%;
-  }
-}
-
-/* =======================
-   LANGUAGE SWITCH
-======================== */
-.lang-switch {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 10;
-}
-
-.lang-switch button {
-  background-color: #ff8c32;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  color: #000;
-}
-.enter-btn {
-  position: absolute;
-  bottom: 40px;
-  color: #ff8c32;
-  border: 2px solid #ff8c32;
-  padding: 10px 22px;
-  border-radius: 30px;
-  font-weight: bold;
-}
-
-
+      .lang-switch button {
+        padding: 6px 12px;
+        font-size: 13px;
+      }
     }
 
+    @media (max-width: 480px) {
+      .hero-header {
+        height: 200px;
+      }
+
+      .hero-logo img {
+        max-width: 100%;
+      }
+    }
+
+    .hero-logo img {
+      animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .hero-header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #ff8c32;
+    }
+
+    .fullscreen-logo img {
+      max-width: 70%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    @media (max-width: 768px) {
+      .fullscreen-logo img {
+        max-width: 90%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .fullscreen-logo img {
+        max-width: 95%;
+      }
+    }
+
+    .enter-btn {
+      position: absolute;
+      bottom: 40px;
+      color: #ff8c32;
+      border: 2px solid #ff8c32;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-weight: bold;
+    }
 
     /* ======================================================
-   FORCE FIX MESSAGE / FEEDBACK FORM (FINAL OVERRIDE)
-   (بدون حذف أو تعديل أي كود موجود)
-====================================================== */
+       FORCE FIX MESSAGE / FEEDBACK FORM (FINAL OVERRIDE)
+    ====================================================== */
 
-/* نخلي الفورم Card في النص */
-section.feedback-cute-force {
-  display: block !important;
-  max-width: 720px !important;
-  margin: 120px auto !important;
-  padding: 40px 30px !important;
-  background: linear-gradient(160deg, #1b1b1b, #242424) !important;
-  border-radius: 26px !important;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.6) !important;
-  text-align: center !important;
-}
+    section.feedback-cute-force {
+      display: block !important;
+      max-width: 720px !important;
+      margin: 120px auto !important;
+      padding: 40px 30px !important;
+      background: linear-gradient(160deg, #1b1b1b, #242424) !important;
+      border-radius: 26px !important;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.6) !important;
+      text-align: center !important;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
 
-/* العنوان */
-section.feedback-cute-force h2 {
-  color: var(--primary) !important;
-  font-size: 26px !important;
-  margin-bottom: 8px !important;
-}
+    section.feedback-cute-force.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-/* النص */
-section.feedback-cute-force p {
-  color: var(--text-muted) !important;
-  font-size: 14px !important;
-  margin-bottom: 28px !important;
-}
+    section.feedback-cute-force h2 {
+      color: var(--primary) !important;
+      font-size: 26px !important;
+      margin-bottom: 8px !important;
+    }
 
-/* الفورم نفسه */
-section.feedback-cute-force form {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 18px !important;
-}
+    section.feedback-cute-force p {
+      color: var(--text-muted) !important;
+      font-size: 14px !important;
+      margin-bottom: 28px !important;
+    }
 
-/* صف الاسم + الإيميل */
-section.feedback-cute-force .row-inputs {
-  display: flex !important;
-  gap: 15px !important;
-}
+    section.feedback-cute-force form {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 18px !important;
+    }
 
-/* كل الـ inputs والـ textarea */
-section.feedback-cute-force input,
-section.feedback-cute-force textarea {
-  width: 100% !important;
-  background-color: #2b2b2b !important;
-  color: #ffffff !important;
-  border: 1px solid #3a3a3a !important;
-  border-radius: 18px !important;
-  padding: 14px 16px !important;
-  font-size: 14px !important;
-  outline: none !important;
-  box-shadow: none !important;
-  appearance: none !important;
-}
+    section.feedback-cute-force .row-inputs {
+      display: flex !important;
+      gap: 15px !important;
+    }
 
-/* textarea تحديدًا */
-section.feedback-cute-force textarea {
-  min-height: 120px !important;
-  resize: none !important;
-}
+    section.feedback-cute-force input,
+    section.feedback-cute-force textarea {
+      width: 100% !important;
+      background-color: #2b2b2b !important;
+      color: #ffffff !important;
+      border: 1px solid #3a3a3a !important;
+      border-radius: 18px !important;
+      padding: 14px 16px !important;
+      font-size: 14px !important;
+      outline: none !important;
+      box-shadow: none !important;
+      appearance: none !important;
+    }
 
-/* placeholder */
-section.feedback-cute-force input::placeholder,
-section.feedback-cute-force textarea::placeholder {
-  color: #aaaaaa !important;
-}
+    section.feedback-cute-force textarea {
+      min-height: 120px !important;
+      resize: none !important;
+    }
 
-/* focus */
-section.feedback-cute-force input:focus,
-section.feedback-cute-force textarea:focus {
-  border-color: var(--primary) !important;
-  box-shadow: 0 0 0 2px rgba(255,140,50,0.25) !important;
-  background-color: #2f2f2f !important;
-}
+    section.feedback-cute-force input::placeholder,
+    section.feedback-cute-force textarea::placeholder {
+      color: #aaaaaa !important;
+    }
 
-/* زر الإرسال */
-section.feedback-cute-force button {
-  margin-top: 10px !important;
-  padding: 14px !important;
-  border-radius: 22px !important;
-  border: none !important;
-  background: linear-gradient(135deg, #ff8c32, #ffb36b) !important;
-  color: #000 !important;
-  font-size: 16px !important;
-  font-weight: bold !important;
-  cursor: pointer !important;
-  transition: all 0.25s ease !important;
-}
+    section.feedback-cute-force input:focus,
+    section.feedback-cute-force textarea:focus {
+      border-color: var(--primary) !important;
+      box-shadow: 0 0 0 2px rgba(255,140,50,0.25) !important;
+      background-color: #2f2f2f !important;
+    }
 
-/* Hover */
-section.feedback-cute-force button:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 12px 25px rgba(255,140,50,0.4) !important;
-}
+    section.feedback-cute-force button {
+      margin-top: 10px !important;
+      padding: 14px !important;
+      border-radius: 22px !important;
+      border: none !important;
+      background: linear-gradient(135deg, #ff8c32, #ffb36b) !important;
+      color: #000 !important;
+      font-size: 16px !important;
+      font-weight: bold !important;
+      cursor: pointer !important;
+      transition: all 0.25s ease !important;
+    }
 
-/* رسالة الإرسال */
-#form-status {
-  margin-top: 15px !important;
-  font-size: 14px !important;
-}
+    section.feedback-cute-force button:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 12px 25px rgba(255,140,50,0.4) !important;
+    }
 
-/* موبايل */
-@media (max-width: 768px) {
-  section.feedback-cute-force .row-inputs {
-    flex-direction: column !important;
-  }
-}
+    #form-status {
+      margin-top: 15px !important;
+      font-size: 14px !important;
+    }
 
-/* ================= FOOTER ================= */
+    @media (max-width: 768px) {
+      section.feedback-cute-force .row-inputs {
+        flex-direction: column !important;
+      }
+    }
 
-.footer{
-  background-color: #000000;   /* خلفية سودا */
-  padding: 30px 15px 28px;     /* تصغير المساحة */
-  text-align: center;
-  width: 100%;
-}
+    /* ================= FOOTER ================= */
 
-/* location */
-.address-link{
-  display: block;
-  font-size: 17px;
-  font-weight: 600;
-  color: #ff8c32;
-  text-decoration: none;
-  margin-bottom: 8px;
-}
+    .footer{
+      background-color: #000000;
+      padding: 30px 15px 28px;
+      text-align: center;
+      width: 100%;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
 
-.address-link:hover{
-  text-decoration: underline;
-}
+    .footer.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-/* hours */
-#hours{
-  font-size: 15px;
-  color: #ffffff;
-  margin-bottom: 16px;
-}
+    .address-link{
+      display: block;
+      font-size: 17px;
+      font-weight: 600;
+      color: #ff8c32;
+      text-decoration: none;
+      margin-bottom: 8px;
+    }
 
-/* social icons */
-.social{
-  display:flex;
-  justify-content:center;
-  gap:16px;          /* مسافة أقل بين الأيقونات */
-}
+    .address-link:hover{
+      text-decoration: underline;
+    }
 
-/* icon circle */
-.social a{
-  width:44px;        /* أصغر */
-  height:44px;
-  background:#ffffff;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#000;
-  font-size:18px;
-  transition:all .25s ease;
-}
+    #hours{
+      font-size: 15px;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
 
-.social a:hover{
-  background:#ff8c32;
-  transform:translateY(-3px) scale(1.05);
-}
+    .social{
+      display:flex;
+      justify-content:center;
+      gap:16px;
+    }
 
-/* Mobile */
-@media(max-width:480px){
-  .address-link{font-size:15px;}
-  #hours{font-size:14px;}
-  .social a{
-    width:40px;
-    height:40px;
-    font-size:16px;
-  }
-}
+    .social a{
+      width:44px;
+      height:44px;
+      background:#ffffff;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#000;
+      font-size:18px;
+      transition:all .25s ease;
+    }
 
+    .social a:hover{
+      background:#ff8c32;
+      transform:translateY(-3px) scale(1.05);
+    }
 
-
+    @media(max-width:480px){
+      .address-link{font-size:15px;}
+      #hours{font-size:14px;}
+      .social a{
+        width:40px;
+        height:40px;
+        font-size:16px;
+      }
+    }
   </style>
 </head>
 
 <body>
-
 
 <!-- =======================
      FULL SCREEN LOGO
@@ -916,8 +557,6 @@ section.feedback-cute-force button:hover {
 
   <img src="logo.png" alt="طاسة وفنجان">
 </header>
-
-
 
 <section>
   <h2 data-ar="طاسة 🥘" data-en="Tasa 🥘">طاسة 🥘</h2>
@@ -942,39 +581,34 @@ section.feedback-cute-force button:hover {
   </div>
 </section>
 
-
-
 <section>
   <h2 data-ar="ساندوتشات 🌭" data-en="Sandwiches 🌭">ساندوتشات 🌭</h2>
   <div class="note"
-       data-ar="يقدم بعيش فرنسي"
-       data-en="Served with French bread">
-    يقدم بعيش فرنسي
+       data-ar="(عيش فرنساوي - عيش فينو)"
+       data-en="(French bread - Feno bread)">
+    (عيش فرنساوي - عيش فينو)
   </div>
 
   <div class="menu-grid">
     <div class="menu-card">
-      <div class="menu-item"><span data-ar="كبدة إسكندراني" data-en="Alexandrian Liver">كبدة إسكندراني</span><span class="price">50</span></div>
-      <div class="menu-item"><span data-ar="سجق إسكندراني" data-en="Alexandrian Sausage">سجق إسكندراني</span><span class="price">50</span></div>
-      <div class="menu-item"><span data-ar="كلاوي" data-en="Kidney">كلاوي</span><span class="price">50</span></div>
-      <div class="menu-item"><span data-ar="كفتة" data-en="Kofta">كفتة</span><span class="price">80</span></div>
-      <div class="menu-item"><span data-ar="برجر" data-en="Burger">برجر</span><span class="price">85</span></div>
-       <div class="menu-item"><span data-ar="برجر جبنة وبيض" data-en="Burger with Cheese & Egg">برجر جبنة وبيض</span><span class="price">95</span></div>
-
+      <div class="menu-item"><span data-ar="كبدة إسكندراني" data-en="Alexandrian Liver">كبدة إسكندراني</span><span class="price">50 - 25</span></div>
+      <div class="menu-item"><span data-ar="سجق إسكندراني" data-en="Alexandrian Sausage">سجق إسكندراني</span><span class="price">50 - 25</span></div>
+      <div class="menu-item"><span data-ar="كلاوي" data-en="Kidney">كلاوي</span><span class="price">50 - 25</span></div>
+      <div class="menu-item"><span data-ar="كفتة" data-en="Kofta">كفتة</span><span class="price">80 - 40</span></div>
+      <div class="menu-item"><span data-ar="برجر" data-en="Burger">برجر</span><span class="price">85 - 45</span></div>
+       <div class="menu-item"><span data-ar="برجر جبنة وبيض" data-en="Burger with Cheese & Egg">برجر جبنة وبيض</span><span class="price">95 - 50</span></div>
     </div>
 
     <div class="menu-card">
-      <div class="menu-item"><span data-ar="بانيه فريش" data-en="Fresh Pane">بانيه فريش</span><span class="price">80</span></div>
-      <div class="menu-item"><span data-ar="كريسبي" data-en="Crispy Chicken">كريسبي</span><span class="price">85</span></div>
-      <div class="menu-item"><span data-ar="شيش طاووق فريش" data-en="Fresh Shish Tawook">شيش طاووق فريش</span><span class="price">90</span></div>
-      <div class="menu-item"><span data-ar="فاهيتا فراخ فريش" data-en="Fresh Chicken Fajitas">فاهيتا فراخ فريش</span><span class="price">90</span></div>
-      <div class="menu-item"><span data-ar="زنجر" data-en="Zinger">زنجر</span><span class="price">115</span></div>
-      <div class="menu-item"><span data-ar="اضافة كومبو" data-en="Add combo">اضافة كومبو</span><span class="price">40</span></div>
+      <div class="menu-item"><span data-ar="بانيه فريش" data-en="Fresh Pane">بانيه فريش</span><span class="price">80 - 40</span></div>
+      <div class="menu-item"><span data-ar="كريسبي" data-en="Crispy Chicken">كريسبي</span><span class="price">85 - 50 </span></div>
+      <div class="menu-item"><span data-ar="شيش طاووق فريش" data-en="Fresh Shish Tawook">شيش طاووق فريش</span><span class="price">90 - 45</span></div>
+      <div class="menu-item"><span data-ar="فاهيتا فراخ فريش" data-en="Fresh Chicken Fajitas">فاهيتا فراخ فريش</span><span class="price">90 - 45</span></div>
+      <div class="menu-item"><span data-ar="زنجر" data-en="Zinger">زنجر</span><span class="price">115 - 60</span></div>
+      <div class="menu-item"><span data-ar="اضافة كومبو" data-en="Add combo">اضافة كومبو</span><span class="price">40 - 20</span></div>
     </div>
   </div>
 </section>
-
-
 
 <section>
   <h2 data-ar="بطاطس 🍟" data-en="Potatoes 🍟">بطاطس 🍟</h2>
@@ -993,11 +627,6 @@ section.feedback-cute-force button:hover {
     </div>
   </div>
 </section>
-
-
-
-
-
 
 <section>
   <h2 data-ar="كريب حادق" data-en="Savory Crepe">كريب حادق</h2>
@@ -1026,11 +655,6 @@ section.feedback-cute-force button:hover {
   </div>
 </section>
 
-
-
-<!-- =======================
-     إضافات
-======================== -->
 <section>
   <h2 data-ar="إضافات +" data-en="Extras +"> إضافات +</h2>
 
@@ -1060,8 +684,6 @@ section.feedback-cute-force button:hover {
   </div>
 </section>
 
-
-
 <section>
   <h2 data-ar="وجبات🍽️" data-en="Meals🍽️">وجبات🍽️</h2>
   <div class="note"
@@ -1079,14 +701,10 @@ section.feedback-cute-force button:hover {
     <div class="menu-card">
       <div class="menu-item"><span data-ar="شيش طاووق" data-en="Shish Tawook">شيش طاووق</span><span class="price">140</span></div>
       <div class="menu-item"><span data-ar="طاووق + كفتة" data-en="Tawook + Kofta">طاووق + كفتة</span><span class="price">180</span></div>
-      <div class="menu-item"><span data-ar=(ورك + صدر)"نصف فرخة" data-en="Half Chicken (Hip + Breast)"(ورك + صدر)>نصف فرخة</span><span class="price">200</span></div>
+      <div class="menu-item"><span data-ar="(ورك + صدر)"نصف فرخة" data-en="Half Chicken (Hip + Breast)"(ورك + صدر)>نصف فرخة</span><span class="price">200</span></div>
     </div>
   </div>
 </section>
-
-
-
-
 
 <section>
   <h2 data-ar="وافل 🧇" data-en="Waffle 🧇">وافل 🧇</h2>
@@ -1113,8 +731,6 @@ section.feedback-cute-force button:hover {
   </div>
 </section>
 
-
-
 <section>
   <h2 data-ar="كريب حلو" data-en="Sweet Crepe">كريب حلو</h2>
 
@@ -1127,18 +743,7 @@ section.feedback-cute-force button:hover {
   </div>
 </section>
 
-
-
-
-
-
-
-
-
-
-
 <section class="feedback-cute-force fade-up">
-
   <h2 
     data-ar="رأيكم يهمّنا ويساعدنا نطوّر نفسنا 🤍"
     data-en="Your feedback helps us improve 🤍">
@@ -1150,12 +755,11 @@ section.feedback-cute-force button:hover {
     data-en="We are waiting for your feedback and suggestions. Thank you for your interest">
     ننتظر ملاحظاتكم واقتراحاتكم، وشكرًا لاهتمامكم
   </p>
-    <form id="contact-form"
-      action="https://formspree.io/f/mlggnrko"
-      method="POST">
+  <form id="contact-form"
+    action="https://formspree.io/f/mlggnrko"
+    method="POST">
 
-
-      <div class="row-inputs">
+    <div class="row-inputs">
       <input 
         type="text"
         name="name"
@@ -1188,55 +792,34 @@ section.feedback-cute-force button:hover {
     </button>
 
     <p id="form-status"></p>
-
   </form>
-
 </section>
 
-
-
-
-<!-- =======================
-     FOOTER
-======================== -->
 <footer class="footer">
-
-  <!-- LOCATION -->
   <a id="address" class="address-link"
      href="https://maps.app.goo.gl/SGVEmSLrRSFFxg6c9"
      target="_blank">
-    📍 Value Mall – El Shorouk – Cairo
+    📍 value Mall – El Shorouk – Cairo
   </a>
 
-  <!-- HOURS -->
   <p id="hours">Daily 2:00 PM – 12:00 AM</p>
 
-  <!-- SOCIAL -->
   <div class="social">
-
     <a href="https://www.facebook.com/share/1DzP2BXEKa/" target="_blank">
       <i class="fab fa-facebook-f"></i>
     </a>
-
     <a href="https://www.tiktok.com/@tasa.w.finjan?_r=1&_t=ZS-93CUhcaEUaL" target="_blank">
       <i class="fab fa-tiktok"></i>
     </a>
-
     <a href="https://wa.me/201288866620" target="_blank">
       <i class="fab fa-whatsapp"></i>
     </a>
-
     <a href="tel:01288866620">
       <i class="fas fa-phone"></i>
     </a>
-
   </div>
-
 </footer>
 
-<!-- =======================
-     LANGUAGE SCRIPT
-======================== -->
 <script>
   let currentLang = "ar";
 
@@ -1250,34 +833,23 @@ section.feedback-cute-force button:hover {
     const button = document.querySelector(".lang-switch button");
 
     if (currentLang === "ar") {
-
-      /* نصوص عادية */
       textElements.forEach(el => {
         el.textContent = el.getAttribute("data-en");
       });
-
-      /* placeholders */
       placeholderElements.forEach(el => {
         el.placeholder = el.getAttribute("data-en-placeholder");
       });
-
       html.setAttribute("dir", "ltr");
       html.setAttribute("lang", "en");
       button.textContent = "AR";
       currentLang = "en";
-
     } else {
-
-      /* نصوص عادية */
       textElements.forEach(el => {
         el.textContent = el.getAttribute("data-ar");
       });
-
-      /* placeholders */
       placeholderElements.forEach(el => {
         el.placeholder = el.getAttribute("data-ar-placeholder");
       });
-
       html.setAttribute("dir", "rtl");
       html.setAttribute("lang", "ar");
       button.textContent = "EN";
@@ -1285,7 +857,6 @@ section.feedback-cute-force button:hover {
     }
   }
 </script>
-
 
 <script>
   const form = document.getElementById("contact-form");
@@ -1317,29 +888,31 @@ section.feedback-cute-force button:hover {
   });
 </script>
 
+<!-- =======================
+     SCROLL ANIMATION SCRIPT
+======================== -->
 <script>
-let lang = "en";
+  // Intersection Observer لإضافة الحركات عند السكرول
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
 
-function toggleLang(){
-  lang = lang === "en" ? "ar" : "en";
-  document.querySelector(".lang-btn").innerText = lang.toUpperCase();
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // تشغيل مرة واحدة فقط
+      }
+    });
+  }, observerOptions);
 
-  document.getElementById("address").innerText =
-    lang === "en"
-      ? "📍 Value Mall – El Shorouk – Cairo"
-      : "📍 مدينة الشروق - فاليو مول";
-
-  document.getElementById("hours").innerText =
-    lang === "en"
-      ? "Daily 2:00 PM – 12:00 AM"
-      : "يوميًا من 2 مساءً حتى 12 صباحًا";
-}
+  // مراقبة كل الـ sections و footer و feedback form
+  document.querySelectorAll('section, footer').forEach(el => {
+    observer.observe(el);
+  });
 </script>
-
-
 
 </body>
 </html>
-
-
-
