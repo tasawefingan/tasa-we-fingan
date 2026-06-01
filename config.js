@@ -1,6 +1,6 @@
 const CONFIG = {
   // Google Apps Script Web App URL
-  API_URL: 'https://script.google.com/macros/s/AKfycbxEazLLeOJ-3hmo_Psy3AlJgZuvjEsi5mAYJplOCin8SDe_KHZGVSsgLC_h1h6HQARY5Q/exec',
+  API_URL: 'https://script.google.com/macros/s/AKfycbzG_BDgweqYpE1iyQMLlxEPi99NdStCEeZ-rtWielX1TCeYr3IxS0w-MTsqjAZiDdHg2g/exec',
 
   // Refresh interval in milliseconds (30 seconds)
   REFRESH_INTERVAL: 30000,
