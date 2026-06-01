@@ -60,7 +60,8 @@ class MenuApp {
       const response = await fetch(CONFIG.API_URL);
       if (!response.ok) throw new Error('Network response was not ok');
       const result = await response.json();
-      const data = result.data || [];
+      // Handle both {data: [...]} and raw [...] array formats from different Apps Script implementations
+      const data = Array.isArray(result) ? result : (result.data || []);
 
       // Check if data actually changed to prevent unnecessary re-renders (no flickering)
       const newDataString = JSON.stringify(data);
