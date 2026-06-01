@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>طاسة وفنجان | Tasa & Finjan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- =======================
+       GLOBAL STYLES
+  ======================== -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =======================
+     FULL SCREEN LOGO
+======================== -->
+<header class="fullscreen-logo">
+  <div class="lang-switch">
+    <button onclick="toggleLanguage()">EN</button>
+  </div>
+
+  <img src="logo.png" alt="طاسة وفنجان">
+</header>
+
+<main id="menu-container"></main>
+
+<section class="feedback-cute-force fade-up">
+  <h2 
+    data-ar="رأيكم يهمّنا ويساعدنا نطوّر نفسنا 🤍"
+    data-en="Your feedback helps us improve 🤍">
+    رأيكم يهمّنا ويساعدنا نطوّر نفسنا 🤍
+  </h2>
+
+  <p 
+    data-ar="ننتظر ملاحظاتكم واقتراحاتكم، وشكرًا لاهتمامكم"
+    data-en="We are waiting for your feedback and suggestions. Thank you for your interest">
+    ننتظر ملاحظاتكم واقتراحاتكم، وشكرًا لاهتمامكم
+  </p>
+  <form id="contact-form"
+    action="https://formspree.io/f/mlggnrko"
+    method="POST">
+
+    <div class="row-inputs">
+      <input 
+        type="text"
+        name="name"
+        data-ar-placeholder="الاسم"
+        data-en-placeholder="Name"
+        placeholder="الاسم"
+        required>
+
+      <input 
+        type="email"
+        name="email"
+        data-ar-placeholder="البريد الإلكتروني"
+        data-en-placeholder="Email"
+        placeholder="البريد الإلكتروني"
+        required>
+    </div>
+
+    <textarea
+      name="message"
+      data-ar-placeholder="اكتب ملاحظتك أو اقتراحك هنا..."
+      data-en-placeholder="Write your message or suggestion here..."
+      placeholder="اكتب ملاحظتك أو اقتراحك هنا..."
+      required></textarea>
+
+    <button 
+      type="submit"
+      data-ar="إرسال 💌"
+      data-en="Send 💌">
+      إرسال 💌
+    </button>
+
+    <p id="form-status"></p>
+  </form>
+</section>
+
+<footer class="footer">
+  <a id="address" class="address-link"
+     href="https://maps.app.goo.gl/SGVEmSLrRSFFxg6c9"
+     target="_blank">
+    📍 value Mall – El Shorouk – Cairo
+  </a>
+
+  <p id="hours">Daily 2:00 PM – 12:00 AM</p>
+
+  <div class="social">
+    <a href="https://www.facebook.com/share/1DzP2BXEKa/" target="_blank">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.tiktok.com/@tasa.w.finjan?_r=1&_t=ZS-93CUhcaEUaL" target="_blank">
+      <i class="fab fa-tiktok"></i>
+    </a>
+    <a href="https://wa.me/201288866620" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="tel:01288866620">
+      <i class="fas fa-phone"></i>
+    </a>
+  </div>
+</footer>
+
+
+
+
+
+<!-- =======================
+     SCROLL ANIMATION SCRIPT
+======================== -->
+
+
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
+
+
